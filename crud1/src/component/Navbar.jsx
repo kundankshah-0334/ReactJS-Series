@@ -2,27 +2,35 @@ import React from "react";
 import { Toolbar, AppBar } from '@mui/material';
 
 import styled from "@emotion/styled";
+import { NavLink } from "react-router-dom";
 
 const Header = styled(AppBar)`
   background-color: black;
   font-size: 32px;
   color: white;
+  padding:0px;
+  height:55px;
+  margin : 0px;
 `;
-const Pitem = styled('p')`
+const Pitem = styled(NavLink)`
    margin-right : 20px;
-  font-size: 32px;
+   padding : 0px;
+  font-size: 17px;
+  cursor:pointer;
+  color: white;
+  text-decoration : none;
  
 `;
 
 const Navbar = () => {
   return (
     <>
-          <Header>
+          <Header position="static">
           <Toolbar>
-            <Pitem>Project </Pitem>
-            <Pitem>Add</Pitem>
-            <Pitem>Remove</Pitem>
-            <Pitem>Update </Pitem>
+            <Pitem to="/">Project </Pitem>
+            <Pitem to="/add">Add</Pitem>
+            <Pitem to="/remove">Remove</Pitem>
+            <Pitem  to="/all">Update </Pitem>
           </Toolbar>
             </Header>   
     </>

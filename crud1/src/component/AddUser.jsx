@@ -12,7 +12,7 @@ margin :5% auto 0  auto ;
 `;
 const initialValue = {
     name : "",
-    usename : "",
+    username : "",
     email : "",
     phone : ""
 }

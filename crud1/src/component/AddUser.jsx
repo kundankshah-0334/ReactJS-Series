@@ -32,7 +32,7 @@ const AddUser = () => {
   return (
     <>
     <Container>
-    <Typography variant="h3">Add User</Typography>
+    <Typography variant="h3">Add single User</Typography>
         <FormControl>
             <InputLabel htmlFor="my-input">Name</InputLabel>
             <Input name="name" onChange={(event) => OnValueChange(event)} aria-describedby="my-helper-text" />
@@ -50,7 +50,7 @@ const AddUser = () => {
             <Input name="phone" onChange={(event) => OnValueChange(event)} aria-describedby="my-helper-text" />
         </FormControl>
         <FormControl>
-        <Button variant="contained" onChange={addUserDetail}>Add</Button>
+        <Button variant="contained" onClick={addUserDetail}>Add</Button>
         </FormControl>
     </Container>
     </>

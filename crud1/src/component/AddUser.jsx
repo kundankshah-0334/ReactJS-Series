@@ -1,6 +1,6 @@
 import { FormGroup , FormControl ,Button , InputLabel , Typography , Input , styled} from "@mui/material";
 import React, { useState } from "react";
-
+import { adduser } from "../service/api"
 const Container = styled(FormGroup)
 `
 width : 50%;
@@ -25,6 +25,10 @@ const AddUser = () => {
         console.log(user);
     }
 
+    const addUserDetail = async () => {
+        await adduser(user);
+    }
+
   return (
     <>
     <Container>
@@ -46,7 +50,7 @@ const AddUser = () => {
             <Input name="phone" onChange={(event) => OnValueChange(event)} aria-describedby="my-helper-text" />
         </FormControl>
         <FormControl>
-        <Button variant="contained">Add</Button>
+        <Button variant="contained" onChange={addUserDetail}>Add</Button>
         </FormControl>
     </Container>
     </>

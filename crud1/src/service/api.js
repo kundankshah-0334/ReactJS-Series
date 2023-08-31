@@ -10,3 +10,11 @@ export const adduser = async (data) => {
 
     }
 }
+
+export const getUser = async () => {
+    try{
+      return await axios.get(`${URL}/all`) ;
+    }catch(e){
+      console.log(e);
+    }
+}

@@ -28,9 +28,10 @@ const Navbar = () => {
           <Header position="static">
           <Toolbar>
             <Pitem to="/">Project </Pitem>
+            <Pitem to="/all">All</Pitem>
             <Pitem to="/add">Add</Pitem>
             <Pitem to="/remove">Remove</Pitem>
-            <Pitem  to="/all">Update </Pitem>
+            <Pitem  to="/update">Update </Pitem>
           </Toolbar>
             </Header>   
     </>

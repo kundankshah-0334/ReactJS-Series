@@ -1,8 +1,27 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Table , TableBody , TableCell , TableContainer , TableHead , TableRow , Paper } from '@mui/material';
+import { Table , TableBody , TableCell ,Button     , TableHead , TableRow ,styled } from '@mui/material';
 import { useEffect } from "react";
-import  { getUser } from "../service/api"
+import  { getUser } from "../service/api";
+import {Link} from "react-router-dom";
+const StyledTable = styled(Table)`
+width:85%;
+margin:15px auto 0 auto ;
+ 
+`;
+const StyledHead = styled(TableRow)`
+background:black;
+ & > th {
+  color : white;
+  font-size : 16px;
+ }
+ 
+`;
+const Tbody = styled(TableRow)`
+ & > td {
+  font-size : 16px;
+ }
+ 
+`;
 const AllUser = () => {
 
   const [user , setuser] = useState([]);
@@ -12,41 +31,50 @@ const AllUser = () => {
   } , []);
 
   const getAllUsers = async () => {
+
    let response =  await getUser();
    setuser(response.data);
   }
 
   return (
     <>
-      <TableContainer component={Paper}>
-      <Table>
+      {/* <TableContainer component={Paper}> */}
+      <StyledTable>
         <TableHead>
-          <TableRow>
+          <StyledHead>
             <TableCell>ID</TableCell>
             <TableCell>Name</TableCell>
-            <TableCell>UserNmae</TableCell>
+            <TableCell>UserName</TableCell>
             <TableCell>Email</TableCell>
             <TableCell>Phone</TableCell>
-          </TableRow>
+            <TableCell>Edit</TableCell>
+            <TableCell>Delete</TableCell>
+          </StyledHead>
         </TableHead>
           {
             user.map(user => (
-              <TableRow>
+              <Tbody>
                 <TableCell>{user._id}</TableCell>
                 <TableCell>{user.name}</TableCell>
                 <TableCell>{user.username}</TableCell>
                 <TableCell>{user.email}</TableCell>
                 <TableCell>{user.phone}</TableCell>
+                <TableCell>
+                  <Button variant="contained" component={Link} to={`/edit/${user._id}`}>Edit</Button>
+                </TableCell>
+                <TableCell>
+                  <Button variant="contained" color="secondary" >Delete</Button>
+                </TableCell>
            
-              </TableRow>
+              </Tbody>
             ))
           }
 
         <TableBody>
            
         </TableBody>
-      </Table>
-    </TableContainer>
+      </StyledTable>
+    {/* </TableContainer> */}
     </>
 
   );

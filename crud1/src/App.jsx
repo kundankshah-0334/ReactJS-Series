@@ -4,6 +4,7 @@ import Navbar from "./component/Navbar";
 import AddUser from "./component/AddUser";
 import AllUser from "./component/AllUser";
 import Project from "./component/Project";
+import EditUser from "./component/EditUser";
 
  import {BrowserRouter , Routes , Route} from "react-router-dom"
 
@@ -16,6 +17,7 @@ const App = () => {
       <Route exact path="/" element={<Project />} /> 
       <Route exact path="/add" element={<AddUser />} /> 
       <Route exact path="/all" element={<AllUser />} /> 
+      <Route exact path="/edit/:id" element={<EditUser />} /> 
  
 
       </Routes>

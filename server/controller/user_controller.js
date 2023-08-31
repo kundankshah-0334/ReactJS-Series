@@ -25,3 +25,11 @@ export const getuser = async (req , res) => {
         res.status(404).json(e);
     }
 } 
+export const getSingleUser = async (req , res) => {
+    try{
+        const SingleUser = await User.find({_id : req.params.id});
+        res.status(201).json(SingleUser);
+    }catch(e){
+        res.status(404).json(e);
+    }
+} 

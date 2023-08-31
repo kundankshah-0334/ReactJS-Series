@@ -18,3 +18,10 @@ export const getUser = async () => {
       console.log(e);
     }
 }
+export const getSingleUser = async (id) => {
+    try{
+      return await axios.get(`${URL}/${id}`) ;
+    }catch(e){
+      console.log(e);
+    }
+}

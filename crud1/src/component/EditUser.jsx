@@ -1,7 +1,8 @@
 import { FormGroup , FormControl ,Button , InputLabel , Typography , Input , styled} from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useState , useEffect } from "react";
-import { adduser , getSingleUser } from "../service/api";
+import { editUser , getSingleUser } from "../service/api";
+
 const Container = styled(FormGroup)
 `
 width : 50%;
@@ -18,69 +19,72 @@ const initialValue = {
     phone : "",
 }
 const EditUser = () => {
-    const [user , setUser] = useState(initialValue);
-
-    let navigate = useNavigate();
+    const [user , setUser] = useState([initialValue]);
     let { id } = useParams();
-     
-
-
-
-    useEffect(() => {
-        const loadSingleUser = async () => {
-          try {
-            const response = await getSingleUser(id);
-            setUser(response.data);
-          } catch (error) {
-            console.error("Error loading user:", error);
-          }
-        };
-        
-        loadSingleUser(); // Call the function here to load user data
-    
-      }, [id]); // Add id as a dependency to the useEffect
-
-      
-
-      
+    let navigate = useNavigate();
 
     // useEffect(() => {
-    //     loadSingleUser();
-    //    } , );
-    
-    //    let  loadSingleUser = async () => {
-    //     let resp = await getSingleUser(id);
-    //     setUser(resp.data);
-
-    //     // console.log(responce.data);
+    //     const loadSingleUser = async () => {
+    //       try {
+    //         const Response = await getSingleUser(id);
+    //         const Try = Response.data;
+    //         setUser(Try[0]);
+    //         console.log(Try[0].name)
+    //       } catch (error) {
+    //         console.error("Error loading user:", error);
+    //       }
+    //     };
         
-    //    }
+    //     loadSingleUser(); // Call the function here to load user data
+    
+    //   }, []); // Add id as a dependency to the useEffect
+
+      
+
+      
+
+    useEffect(() => {
+        loadSingleUser();
+       } , );
+    
+       let  loadSingleUser = async () => {
+        let resp = await getSingleUser(id);
+        setUser(resp.data[0]);
+
+        // console.log(responce.data);
+        
+       }
 
 
     // const OnValueChange = (event) => {
     //     setUser({...user , [event.target.name] : event.target.value});
-    //     console.log(user.username);
+  
     // }
 
 
+    // const OnValueChange = (event) => {
+    //     setUser({
+    //       ...user,
+    //       [event.target.name]: event.target.value,
+    //     });
+    //   }
+
     const OnValueChange = (event) => {
-        setUser({
-          ...user,
-          [event.target.name]: event.target.value,
-        });
-      }
-
-    
-
-    const addUserDetail = async () => {
-        await adduser(user);
-        navigate('/all');
+        setUser({...user , [event.target.name] : event.target.value});
+        console.log(user);
     }
 
+    // const addUserDetail = async () => {
+    //     await adduser(user);
+    //     navigate('/all');
+    // }
 
     
- 
 
+    const editUserDetail = async () => {
+        await editUser(user);
+        navigate('/all');
+    }
 
   return (
     <>
@@ -104,7 +108,7 @@ const EditUser = () => {
         </FormControl>
         <FormControl>
         <Button variant="contained"   >Edit</Button>
-        <Button variant="contained" onClick={addUserDetail} >Edit close</Button>
+        <Button variant="contained" onClick={editUserDetail} >Edit close</Button>
         </FormControl>
     </Container>
     </>

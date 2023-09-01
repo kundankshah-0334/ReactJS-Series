@@ -25,7 +25,18 @@ export const getSingleUser = async (req , res) => {
     try{
         const SingleUser = await User.find({_id : req.params.id});
         res.status(201).json(SingleUser);
-        
+        console.log(SingleUser);
+    }catch(e){
+        res.status(404).json(e);
+    }
+} 
+export const editUserTry = async (req , res) => {
+    let user = req.body();
+    const Edited_user = new User(user)
+    try{
+         await User.updateOne({_id : req.params.id} , Edited_user);
+        res.status(201).json(Edited_user);
+        console.log(Edited_user);
     }catch(e){
         res.status(404).json(e);
     }

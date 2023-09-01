@@ -25,3 +25,10 @@ export const getSingleUser = async (id) => {
       console.log(e);
     }
 }
+export const editUser = async (user , id) => {
+    try{
+      return await axios.post(`${URL}/${id}` , user) ;
+    }catch(e){
+      console.log(e);
+    }
+}

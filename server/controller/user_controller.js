@@ -3,11 +3,7 @@ import User from "../schema/user-schema.js";
 
 export const adduser = async (req , res) => {
     const user = req.body;
-
-
-
     const new_user = new User(user);
-
     try{
         await new_user.save();
         res.status(201).json(new_user);
@@ -29,6 +25,7 @@ export const getSingleUser = async (req , res) => {
     try{
         const SingleUser = await User.find({_id : req.params.id});
         res.status(201).json(SingleUser);
+        console.log('SingleUser');
     }catch(e){
         res.status(404).json(e);
     }

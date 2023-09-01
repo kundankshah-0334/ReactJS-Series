@@ -37,10 +37,20 @@ const EditUser = () => {
        }
 
 
+    // const OnValueChange = (event) => {
+    //     setUser({...user , [event.target.name] : event.target.value});
+    //     console.log(user.username);
+    // }
+
+
     const OnValueChange = (event) => {
-        setUser({...user , [event.target.name] : event.target.value});
-        console.log(user);
-    }
+        setUser((user) => ({
+          ...user,
+          [event.target.name]: event.target.value,
+        }));
+      }
+
+    
 
     const addUserDetail = async () => {
         await adduser(user);
@@ -58,7 +68,7 @@ const EditUser = () => {
     <Typography variant="h3">Edit User</Typography>
         <FormControl>
             <InputLabel>Name</InputLabel>
-            <Input onChange={(event) => OnValueChange(event)}  name="name"  value={user.name}/>
+            <Input onChange={(event) => OnValueChange(event)}  name="name"  value={user.name} />
         </FormControl>
         <FormControl>
             <InputLabel htmlFor="my-input">UserName</InputLabel>

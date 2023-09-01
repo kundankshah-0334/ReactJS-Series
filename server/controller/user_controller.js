@@ -25,7 +25,7 @@ export const getSingleUser = async (req , res) => {
     try{
         const SingleUser = await User.find({_id : req.params.id});
         res.status(201).json(SingleUser);
-        console.log('SingleUser');
+        
     }catch(e){
         res.status(404).json(e);
     }

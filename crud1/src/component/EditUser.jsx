@@ -15,26 +15,46 @@ const initialValue = {
     name : "",
     username : "",
     email : "",
-    phone : ""
+    phone : "",
 }
 const EditUser = () => {
     const [user , setUser] = useState(initialValue);
 
-    const navigate = useNavigate();
-    const { id } = useParams();
+    let navigate = useNavigate();
+    let { id } = useParams();
      
 
 
+
     useEffect(() => {
-        loadSingleUser();
-       } , []);
-    
-       const  loadSingleUser = async () => {
-        const responce = await getSingleUser(id);
-        setUser(responce.data);
-        console.log(responce.data);
+        const loadSingleUser = async () => {
+          try {
+            const response = await getSingleUser(id);
+            setUser(response.data);
+          } catch (error) {
+            console.error("Error loading user:", error);
+          }
+        };
         
-       }
+        loadSingleUser(); // Call the function here to load user data
+    
+      }, [id]); // Add id as a dependency to the useEffect
+
+      
+
+      
+
+    // useEffect(() => {
+    //     loadSingleUser();
+    //    } , );
+    
+    //    let  loadSingleUser = async () => {
+    //     let resp = await getSingleUser(id);
+    //     setUser(resp.data);
+
+    //     // console.log(responce.data);
+        
+    //    }
 
 
     // const OnValueChange = (event) => {
@@ -44,10 +64,10 @@ const EditUser = () => {
 
 
     const OnValueChange = (event) => {
-        setUser((user) => ({
+        setUser({
           ...user,
           [event.target.name]: event.target.value,
-        }));
+        });
       }
 
     
@@ -84,7 +104,7 @@ const EditUser = () => {
         </FormControl>
         <FormControl>
         <Button variant="contained"   >Edit</Button>
-        {/* <Button variant="contained" onClick={editUserDetail} >Edit</Button> */}
+        <Button variant="contained" onClick={addUserDetail} >Edit close</Button>
         </FormControl>
     </Container>
     </>

@@ -45,15 +45,12 @@ const EditUser = () => {
 
     useEffect(() => {
         loadSingleUser();
-       } , );
-    
-       let  loadSingleUser = async () => {
-        let resp = await getSingleUser(id);
-        setUser(resp.data[0]);
+    } , [] );
 
-        // console.log(responce.data);
-        
-       }
+    const  loadSingleUser = async () => {
+        const resp = await getSingleUser(id);
+        setUser(resp.data[0]);
+    }
 
 
     // const OnValueChange = (event) => {
@@ -69,9 +66,15 @@ const EditUser = () => {
     //     });
     //   }
 
+    // const OnValueChange = (event) => {
+    //     setUser({...user , [event.target.name] : event.target.value});
+    //     console.log(user);
+    // }
     const OnValueChange = (event) => {
-        setUser({...user , [event.target.name] : event.target.value});
-        console.log(user);
+        setUser({
+          ...user,
+          [event.target.name]: event.target.value,
+        });
     }
 
     // const addUserDetail = async () => {
@@ -107,8 +110,8 @@ const EditUser = () => {
             <Input name="phone" value={user.phone} onChange={(event) => OnValueChange(event)} aria-describedby="my-helper-text" />
         </FormControl>
         <FormControl>
-        <Button variant="contained"   >Edit</Button>
-        <Button variant="contained" onClick={editUserDetail} >Edit close</Button>
+        {/* <Button variant="contained"   >Edit</Button> */}
+        <Button variant="contained" onClick={editUserDetail} >Edit</Button>
         </FormControl>
     </Container>
     </>

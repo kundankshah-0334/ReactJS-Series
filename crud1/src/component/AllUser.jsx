@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Table , TableBody , TableCell ,Button     , TableHead , TableRow ,styled } from '@mui/material';
 import { useEffect } from "react";
-import  { getUser } from "../service/api";
-import {Link} from "react-router-dom";
+import  { getUser , deleteUser } from "../service/api";
+import {Link } from "react-router-dom";
 const StyledTable = styled(Table)`
 width:85%;
 margin:15px auto 0 auto ;
@@ -26,6 +26,8 @@ const AllUser = () => {
 
   const [user , setuser] = useState([]);
 
+  
+
    useEffect(() => {
     getAllUsers();
   } , []);
@@ -34,6 +36,11 @@ const AllUser = () => {
 
    let response =  await getUser();
    setuser(response.data);
+  }
+
+  const deleteUserDetails = async (id) => {
+      await deleteUser(id);
+      getAllUsers();
   }
 
   return (
@@ -53,7 +60,7 @@ const AllUser = () => {
         </TableHead>
           {
             user.map(user => (
-              <Tbody>
+              <Tbody key={user._id}>
                 <TableCell>{user._id}</TableCell>
                 <TableCell>{user.name}</TableCell>
                 <TableCell>{user.username}</TableCell>
@@ -63,7 +70,7 @@ const AllUser = () => {
                   <Button variant="contained" component={Link} to={`/edit/${user._id}`}>Edit</Button>
                 </TableCell>
                 <TableCell>
-                  <Button variant="contained" color="secondary" >Delete</Button>
+                  <Button variant="contained" color="secondary" onClick={() => {deleteUserDetails(user._id)}} >Delete</Button>
                 </TableCell>
            
               </Tbody>

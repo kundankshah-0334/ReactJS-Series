@@ -42,3 +42,28 @@ export const editUser = async (req , res) => {
         res.status(409).json(e);
     }
 } 
+// export const deleteUser = async (req , res) => {
+ 
+//     try{
+//          await User.findByIdAndDelete({ _id : req.params.id } , editUser);
+   
+       
+//     }catch(e){
+//         res.status(409).json(e);
+//     }
+// } 
+
+export const deleteUser = async (req, res) => {
+    try {
+        const user = await User.findByIdAndDelete(req.params.id);
+        
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.status(200).json({ message: 'User deleted successfully' });
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+};

@@ -21,27 +21,7 @@ const initialValue = {
 const EditUser = () => {
     const [user , setUser] = useState([initialValue]);
     let { id } = useParams();
-    let navigate = useNavigate();
-
-    // useEffect(() => {
-    //     const loadSingleUser = async () => {
-    //       try {
-    //         const Response = await getSingleUser(id);
-    //         const Try = Response.data;
-    //         setUser(Try[0]);
-    //         console.log(Try[0].name)
-    //       } catch (error) {
-    //         console.error("Error loading user:", error);
-    //       }
-    //     };
-        
-    //     loadSingleUser(); // Call the function here to load user data
-    
-    //   }, []); // Add id as a dependency to the useEffect
-
-      
-
-      
+    let navigate = useNavigate();  
 
     useEffect(() => {
         loadSingleUser();
@@ -52,41 +32,16 @@ const EditUser = () => {
         setUser(resp.data[0]);
     }
 
-
-    // const OnValueChange = (event) => {
-    //     setUser({...user , [event.target.name] : event.target.value});
-  
-    // }
-
-
-    // const OnValueChange = (event) => {
-    //     setUser({
-    //       ...user,
-    //       [event.target.name]: event.target.value,
-    //     });
-    //   }
-
-    // const OnValueChange = (event) => {
-    //     setUser({...user , [event.target.name] : event.target.value});
-    //     console.log(user);
-    // }
     const OnValueChange = (event) => {
-        setUser({
-          ...user,
-          [event.target.name]: event.target.value,
-        });
+        setUser({...user , [event.target.name] : event.target.value});
     }
-
-    // const addUserDetail = async () => {
-    //     await adduser(user);
-    //     navigate('/all');
-    // }
-
     
-
     const editUserDetail = async () => {
-        await editUser(user);
+        await editUser(user ,id);
+        
+        // console.log(user);
         navigate('/all');
+
     }
 
   return (
@@ -111,7 +66,7 @@ const EditUser = () => {
         </FormControl>
         <FormControl>
         {/* <Button variant="contained"   >Edit</Button> */}
-        <Button variant="contained" onClick={editUserDetail} >Edit</Button>
+        <Button variant="contained" onClick={editUserDetail} >Edit User</Button>
         </FormControl>
     </Container>
     </>

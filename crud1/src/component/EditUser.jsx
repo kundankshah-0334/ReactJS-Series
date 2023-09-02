@@ -12,6 +12,11 @@ margin :5% auto 0  auto ;
     margin-top : 20px;
 }
 `;
+const Heading = styled(Typography)
+`
+ font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif';
+ 
+`;
 const initialValue = {
     name : "",
     username : "",
@@ -47,7 +52,7 @@ const EditUser = () => {
   return (
     <>
     <Container>
-    <Typography variant="h3">Edit User</Typography>
+    <Heading variant="h3" >Edit User</Heading>
         <FormControl>
             <InputLabel>Name</InputLabel>
             <Input onChange={(event) => OnValueChange(event)}  name="name"  value={user.name} />

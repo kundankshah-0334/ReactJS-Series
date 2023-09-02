@@ -5,6 +5,7 @@ import AddUser from "./component/AddUser";
 import AllUser from "./component/AllUser";
 import Project from "./component/Project";
 import EditUser from "./component/EditUser";
+import Footer from "./footer";
 
  import {BrowserRouter , Routes , Route} from "react-router-dom"
 
@@ -25,7 +26,7 @@ const App = () => {
           
           
       </BrowserRouter>
-   
+      <Footer />
 
     </>
   );

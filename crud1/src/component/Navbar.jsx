@@ -21,13 +21,22 @@ const Pitem = styled(NavLink)`
   text-decoration : none;
  
 `;
+const P1item = styled(NavLink)`
+   margin-right : 20px;
+   padding : 0px;
+  font-size: 22px;
+  cursor:pointer;
+  color: white;
+  text-decoration : none;
+ 
+`;
 
 const Navbar = () => {
   return (
     <>
           <Header position="static">
           <Toolbar>
-            <Pitem to="/">Project </Pitem>
+            <P1item to="/">Home </P1item>
             <Pitem to="/all">AllUser</Pitem>
             <Pitem to="/add">AddUser</Pitem>
           </Toolbar>

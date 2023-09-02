@@ -49,7 +49,7 @@ const AllUser = () => {
       <StyledTable>
         <TableHead>
           <StyledHead>
-            <TableCell>ID</TableCell>
+            {/* <TableCell>ID</TableCell> */}
             <TableCell>Name</TableCell>
             <TableCell>UserName</TableCell>
             <TableCell>Email</TableCell>
@@ -61,7 +61,7 @@ const AllUser = () => {
           {
             user.map(user => (
               <Tbody key={user._id}>
-                <TableCell>{user._id}</TableCell>
+                {/* <TableCell>{user._id}</TableCell> */}
                 <TableCell>{user.name}</TableCell>
                 <TableCell>{user.username}</TableCell>
                 <TableCell>{user.email}</TableCell>

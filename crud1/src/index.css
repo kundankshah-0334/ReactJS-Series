@@ -1,5 +1,37 @@
 body {
   margin: 0;
+  background-color: #f3f1f1;
  
+}
+.container{
+  /* display: flex;
+  flex-direction: row; */
+  margin-top: 105px;
+  margin-left: 210px;
+  margin-right: 210px;
+  background-color: rgb(183, 225, 211);
+  /* width: 555px;
+  height: 234px; */
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 53px;
+  border-radius: 20px;
+  /* border: 1px solid rgb(100, 151, 245); */
+  font-size: 28px;
+  
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+ .btn_started{
+  background-color: black;
+  color: white;
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 70px rgba(255, 255, 255, 0.5);
+  border: none;
+  text-decoration: none;
+  
 }
  

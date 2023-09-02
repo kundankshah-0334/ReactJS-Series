@@ -1,9 +1,15 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+
 
 const Project = () => {
   return (
     <>
-    <h1>Hello from the Project</h1>
+    <div className="container">
+
+    <h1>CRUD Application</h1>
+    <NavLink className="btn_started" to="/add">Get Started</NavLink>
+    </div>
     </>
 
   );
